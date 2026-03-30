@@ -60,7 +60,7 @@ export default function Page() {
 
       {/* 現実 */}
       <Section gray>
-        <p className="text-xl leading-relaxed">
+        <p className="text-lg md:text-xl leading-relaxed">
           原油価格の上昇により<br />
           物流コストは確実に上がっています。
         </p>
@@ -68,7 +68,7 @@ export default function Page() {
 
       {/* 差 */}
       <Section>
-        <p className="text-xl leading-relaxed">
+        <p className="text-lg md:text-xl leading-relaxed">
           同じ業界・同じ規模でも<br />
           コストに大きな差が出ています。
         </p>
@@ -76,7 +76,7 @@ export default function Page() {
 
       {/* 原因 */}
       <Section gray>
-        <p className="text-xl font-semibold text-[#0A2643]">
+        <p className="text-lg md:text-xl font-semibold text-[#0A2643] leading-relaxed">
           その差は<br />
           物流の構造で決まります。
         </p>
@@ -84,7 +84,7 @@ export default function Page() {
 
       {/* 自分ごと */}
       <Section>
-        <p className="text-xl leading-relaxed">
+        <p className="text-lg md:text-xl leading-relaxed">
           あなたの会社にも<br />
           削減余地が残っている可能性があります。
         </p>
@@ -92,7 +92,7 @@ export default function Page() {
 
       {/* 構造 */}
       <Section gray>
-        <p className="text-xl">
+        <p className="text-lg md:text-xl leading-relaxed">
           物流コストは単一要因では決まりません。
         </p>
 
@@ -106,7 +106,7 @@ export default function Page() {
 
       {/* 具体 */}
       <Section>
-        <p className="text-xl leading-relaxed">
+        <p className="text-lg md:text-xl leading-relaxed">
           拠点配置が最適でないだけで<br />
           年間1億円以上の差が出るケースがあります。
         </p>
@@ -114,7 +114,7 @@ export default function Page() {
 
       {/* 時間圧 */}
       <Section gray>
-        <p className="text-xl">
+        <p className="text-lg md:text-xl leading-relaxed">
           この差は<br />
           毎月積み上がっています。
         </p>
@@ -122,7 +122,7 @@ export default function Page() {
 
       {/* 診断 */}
       <Section>
-        <p className="text-xl">
+        <p className="text-lg md:text-xl leading-relaxed">
           ・3分で完了<br />
           ・その場で結果表示<br />
           ・準備不要
@@ -135,7 +135,7 @@ export default function Page() {
 
       {/* 信頼 */}
       <Section gray>
-        <p className="text-lg">
+        <p className="text-lg md:text-xl leading-relaxed">
           すでに大手企業では<br />
           物流の構造最適化が進んでいます。
         </p>
@@ -143,7 +143,7 @@ export default function Page() {
 
       {/* クロージング */}
       <Section>
-        <p className="text-xl">
+        <p className="text-lg md:text-xl leading-relaxed">
           判断するためには<br />
           まず現状の把握が必要です。
         </p>
