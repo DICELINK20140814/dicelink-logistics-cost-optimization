@@ -1,65 +1,168 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+const URL = "https://logistics-diagnostic-dice-link-co-j.vercel.app/";
+
+function CTA() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <a
+      href={URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block w-full rounded-lg bg-[#CEC1A1] px-6 py-4 text-center font-semibold text-[#0A2643] shadow-lg hover:opacity-95 transition"
+    >
+      コスト改善余地を確認する（3分・無料）
+      <div className="text-xs mt-1 opacity-70">
+        年間数千万円〜数億円の削減余地がある可能性があります。
+      </div>
+    </a>
+  );
+}
+
+function Section({ children, gray = false }: any) {
+  return (
+    <section className={gray ? "bg-[#F7F8FA]" : ""}>
+      <div className="max-w-4xl mx-auto px-6 py-20">{children}</div>
+    </section>
+  );
+}
+
+export default function Page() {
+  return (
+    <main>
+
+      {/* HERO */}
+      <Section>
+        <img src="/logo.png" className="h-8 mb-10" />
+
+        <h1 className="text-4xl md:text-5xl font-bold text-[#0A2643] leading-tight">
+          物流コストは
+          <br />
+          改善余地があります
+        </h1>
+
+        <p className="mt-6 text-2xl font-semibold text-[#0A2643]">
+          年間数千万円〜数億円
+        </p>
+
+        <p className="text-xl mt-2">
+          コスト改善余地がある可能性があります。
+        </p>
+
+        <p className="mt-8 text-lg leading-relaxed">
+          原油高は止められません<br />
+          しかし見直せるコストは抑えられます。
+        </p>
+
+        <div className="mt-10">
+          <CTA />
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+      </Section>
+
+      {/* 現実 */}
+      <Section gray>
+        <p className="text-xl leading-relaxed">
+          原油価格の上昇により<br />
+          物流コストは確実に上がっています。
+        </p>
+      </Section>
+
+      {/* 差 */}
+      <Section>
+        <p className="text-xl leading-relaxed">
+          同じ業界・同じ規模でも<br />
+          コストに大きな差が出ています。
+        </p>
+      </Section>
+
+      {/* 原因 */}
+      <Section gray>
+        <p className="text-xl font-semibold text-[#0A2643]">
+          その差は<br />
+          物流の構造で決まります。
+        </p>
+      </Section>
+
+      {/* 自分ごと */}
+      <Section>
+        <p className="text-xl leading-relaxed">
+          あなたの会社にも<br />
+          削減余地が残っている可能性があります。
+        </p>
+      </Section>
+
+      {/* 構造 */}
+      <Section gray>
+        <p className="text-xl">
+          物流コストは単一要因では決まりません。
+        </p>
+
+        <div className="mt-8 space-y-3 text-lg">
+          <div>・拠点配置</div>
+          <div>・配送設計</div>
+          <div>・積載効率</div>
+          <div>・出荷のばらつき</div>
         </div>
-      </main>
-    </div>
+      </Section>
+
+      {/* 具体 */}
+      <Section>
+        <p className="text-xl leading-relaxed">
+          拠点配置が最適でないだけで<br />
+          年間1億円以上の差が出るケースがあります。
+        </p>
+      </Section>
+
+      {/* 時間圧 */}
+      <Section gray>
+        <p className="text-xl">
+          この差は<br />
+          毎月積み上がっています。
+        </p>
+      </Section>
+
+      {/* 診断 */}
+      <Section>
+        <p className="text-xl">
+          ・3分で完了<br />
+          ・その場で結果表示<br />
+          ・準備不要
+        </p>
+
+        <div className="mt-10">
+          <CTA />
+        </div>
+      </Section>
+
+      {/* 信頼 */}
+      <Section gray>
+        <p className="text-lg">
+          すでに大手企業では<br />
+          物流の構造最適化が進んでいます。
+        </p>
+      </Section>
+
+      {/* クロージング */}
+      <Section>
+        <p className="text-xl">
+          判断するためには<br />
+          まず現状の把握が必要です。
+        </p>
+
+        <div className="mt-10">
+          <CTA />
+        </div>
+      </Section>
+
+      {/* フッター */}
+      <footer className="text-center text-sm text-gray-500 py-10">
+        ©DICE LINK, INC.
+      </footer>
+
+      {/* 追従CTA */}
+      <div className="fixed bottom-0 left-0 w-full bg-white border-t p-4">
+        <CTA />
+      </div>
+
+    </main>
   );
 }
