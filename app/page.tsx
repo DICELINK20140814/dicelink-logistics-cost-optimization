@@ -28,17 +28,44 @@ function CTA() {
 function Section({
   children,
   variant = "default",
+  photoSrc,
 }: {
   children: React.ReactNode;
   variant?: "default" | "muted";
+  /** public/ 配下のパス（例: /bg-01.jpg）。未指定なら従来どおり単色背景。 */
+  photoSrc?: string;
 }) {
+  const hasPhoto = Boolean(photoSrc);
+
   return (
     <section
-      className={`border-b border-[#E8DFD0] last:border-b-0 ${
-        variant === "muted" ? "bg-[#FAF7F2]" : "bg-[#FFFFFF]"
+      className={`relative overflow-hidden border-b border-[#E8DFD0] last:border-b-0 ${
+        hasPhoto ? "" : variant === "muted" ? "bg-[#FAF7F2]" : "bg-[#FFFFFF]"
       }`}
     >
-      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">{children}</div>
+      {hasPhoto && (
+        <>
+          <div className="absolute inset-0 z-0">
+            <Image
+              src={photoSrc!}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="100vw"
+              priority={photoSrc === "/bg-01.jpg"}
+            />
+          </div>
+          <div
+            className={`absolute inset-0 z-[1] ${
+              variant === "muted" ? "bg-[#FAF7F2]/82" : "bg-[#FFFFFF]/80"
+            }`}
+            aria-hidden
+          />
+        </>
+      )}
+      <div className="relative z-10 mx-auto max-w-3xl px-6 py-20 md:py-28">
+        {children}
+      </div>
     </section>
   );
 }
@@ -49,7 +76,7 @@ export default function Page() {
       className={`${notoSansJp.className} min-h-screen bg-[#FFFFFF] pb-28 text-[#0F2744] antialiased`}
     >
       <main>
-        <Section>
+        <Section photoSrc="/bg-01.jpg">
           <div className="mb-12">
             <Image
               src="/logo.png"
@@ -79,7 +106,7 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section variant="muted">
+        <Section variant="muted" photoSrc="/bg-02.jpg">
           <p className="text-lg leading-[1.85] text-[#2C3544] md:text-xl">
             配送ルートは最適化されていると思われている。
             <br />
@@ -87,7 +114,7 @@ export default function Page() {
           </p>
         </Section>
 
-        <Section>
+        <Section photoSrc="/bg-03.jpg">
           <p className="text-lg leading-[1.85] text-[#2C3544] md:text-xl">
             配送ルート、積載、人員、拠点は連動している。
             <br />
@@ -107,7 +134,7 @@ export default function Page() {
           </p>
         </Section>
 
-        <Section variant="muted">
+        <Section variant="muted" photoSrc="/bg-04.jpg">
           <p className="text-lg leading-[1.85] text-[#2C3544] md:text-xl">
             売上50億〜500億規模の物流企業において、
           </p>
@@ -131,7 +158,7 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section>
+        <Section photoSrc="/bg-05.jpg">
           <p className="text-lg font-medium leading-[1.85] text-[#0F2744] md:text-xl">
             現状の運用では、
           </p>
@@ -150,7 +177,7 @@ export default function Page() {
           </p>
         </Section>
 
-        <Section variant="muted">
+        <Section variant="muted" photoSrc="/bg-06.jpg">
           <p className="text-lg font-medium leading-[1.85] text-[#0F2744] md:text-xl">
             配送ルートを起点に
           </p>
@@ -165,7 +192,7 @@ export default function Page() {
           </p>
         </Section>
 
-        <Section>
+        <Section photoSrc="/bg-07.jpg">
           <p className="text-lg leading-[1.85] text-[#2C3544] md:text-xl">
             どこを動かせばどれだけコストが変わるかが明確になる。
             <br />
@@ -178,7 +205,7 @@ export default function Page() {
           </div>
         </Section>
 
-        <Section variant="muted">
+        <Section variant="muted" photoSrc="/bg-08.jpg">
           <p className="text-lg leading-[1.85] text-[#2C3544] md:text-xl">
             算出は、同一条件（物量・拠点・制約）で比較しているため、
             <br />
@@ -186,12 +213,16 @@ export default function Page() {
           </p>
         </Section>
 
-        <Section>
+        <Section photoSrc="/bg-09.jpg">
           <div className="flex justify-center">
             <CTA />
           </div>
         </Section>
       </main>
+
+      <footer className="border-t border-[#E8DFD0] bg-[#FFFFFF] px-6 py-10 text-center text-sm text-[#2C3544]">
+        ©DICE LINK, Inc.
+      </footer>
 
       <div className="fixed bottom-0 left-0 right-0 border-t border-[#E8DFD0] bg-[#FFFCF8]/95 px-4 py-4 backdrop-blur-sm">
         <div className="mx-auto flex max-w-3xl justify-center">
