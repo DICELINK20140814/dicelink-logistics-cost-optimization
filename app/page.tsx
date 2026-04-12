@@ -45,19 +45,20 @@ function Section({
     >
       {hasPhoto && (
         <>
-          <div className="absolute inset-0 z-0">
-            <Image
-              src={photoSrc!}
-              alt=""
-              fill
-              className="object-cover"
-              sizes="100vw"
-              priority={photoSrc === "/bg-01.jpg"}
-            />
-          </div>
+          {/* fill は親高さの解釈で消えることがあるため、img + object-cover で全面敷きに固定 */}
+          <img
+            src={photoSrc}
+            alt=""
+            className="pointer-events-none absolute inset-0 z-0 h-full w-full object-cover"
+            loading={photoSrc === "/bg-01.jpg" ? "eager" : "lazy"}
+            decoding="async"
+            fetchPriority={photoSrc === "/bg-01.jpg" ? "high" : "auto"}
+          />
           <div
-            className={`absolute inset-0 z-[1] ${
-              variant === "muted" ? "bg-[#FAF7F2]/82" : "bg-[#FFFFFF]/80"
+            className={`pointer-events-none absolute inset-0 z-[1] ${
+              variant === "muted"
+                ? "bg-[#FAF7F2]/55"
+                : "bg-[#FFFFFF]/50"
             }`}
             aria-hidden
           />
