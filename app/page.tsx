@@ -1,6 +1,15 @@
-"use client";
+import { Noto_Sans_JP } from "next/font/google";
+
+const notoSansJp = Noto_Sans_JP({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 const URL = "https://logistics-diagnostic-dice-link-co-j.vercel.app/";
+
+const accent =
+  "inline-flex w-full max-w-xl items-center justify-center rounded border border-[#1E40AF] bg-[#1E40AF] px-8 py-4 text-center text-[15px] font-medium tracking-wide text-white transition hover:bg-[#1D4ED8] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#1E40AF] md:text-base";
 
 function CTA() {
   return (
@@ -8,161 +17,162 @@ function CTA() {
       href={URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="block w-full rounded-lg bg-[#CEC1A1] px-6 py-4 text-center font-semibold text-[#0A2643] shadow-lg hover:opacity-95 transition"
+      className={accent}
     >
-      コスト改善余地を確認する（3分・無料）
-      <div className="text-xs mt-1 opacity-70">
-        年間数千万円〜数億円の削減余地がある可能性があります。
-      </div>
+      現状のまま、いくら損失が出ているか確認する
     </a>
   );
 }
 
-function Section({ children, gray = false }: any) {
+function Section({ children }: { children: React.ReactNode }) {
   return (
-    <section className={gray ? "bg-[#F7F8FA]" : ""}>
-      <div className="max-w-4xl mx-auto px-6 py-20">{children}</div>
+    <section className="border-b border-neutral-200 bg-[#FFFFFF] last:border-b-0">
+      <div className="mx-auto max-w-3xl px-6 py-20 md:py-28">{children}</div>
     </section>
   );
 }
 
 export default function Page() {
   return (
-    <main>
+    <div
+      className={`${notoSansJp.className} min-h-screen bg-[#FFFFFF] pb-28 text-[#000000] antialiased`}
+    >
+      <main>
+        <Section>
+          <p className="text-lg font-medium leading-[1.75] tracking-tight md:text-xl">
+            配送ルートを毎日見直しているのに、
+            <br />
+            それが最適だと説明できますか。
+          </p>
+          <p className="mt-10 text-lg font-medium leading-[1.75] tracking-tight md:text-xl">
+            説明できない限り、
+            <br />
+            コストは既に漏れています。
+          </p>
+          <div className="mt-14">
+            <CTA />
+          </div>
+        </Section>
 
-      {/* HERO */}
-      <Section>
-        <img src="/logo.png" className="h-8 mb-10" />
+        <Section>
+          <p className="text-lg leading-[1.85] text-[#333333] md:text-xl">
+            配送ルートは最適化されていると思われている。
+            <br />
+            しかし、それを証明できる企業は存在しない。
+          </p>
+        </Section>
 
-        <h1 className="text-4xl md:text-5xl font-bold text-[#0A2643] leading-tight">
-          物流コストは
-          <br />
-          改善余地があります
-        </h1>
+        <Section>
+          <p className="text-lg leading-[1.85] text-[#333333] md:text-xl">
+            配送ルート、積載、人員、拠点は連動している。
+            <br />
+            個別に調整している限り、トレードオフが未処理のまま残る。
+          </p>
+          <p className="mt-12 text-lg font-medium leading-[1.85] text-[#000000] md:text-xl">
+            その結果、
+          </p>
+          <div className="mt-8 space-y-3 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            <p>不要な走行距離が発生する</p>
+            <p>人件費が過剰に発生する</p>
+            <p>積載効率が低下する</p>
+            <p>車両台数が増加する</p>
+          </div>
+          <p className="mt-12 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            毎月、構造的にコストが漏れ続けている。
+          </p>
+        </Section>
 
-        <p className="mt-6 text-2xl font-semibold text-[#0A2643]">
-          年間数千万円〜数億円
-        </p>
+        <Section>
+          <p className="text-lg leading-[1.85] text-[#333333] md:text-xl">
+            売上50億〜500億規模の物流企業において、
+          </p>
+          <p className="mt-10 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            年間数千万円〜数億円単位のコストが、
+            <br />
+            既に漏れている可能性が高い。
+          </p>
+          <p className="mt-10 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            これは改善余地ではなく、
+            <br />
+            既に発生している損失である。
+          </p>
+          <p className="mt-10 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            この状態を1年継続した場合、
+            <br />
+            同額の損失が追加で固定される。
+          </p>
+          <div className="mt-14">
+            <CTA />
+          </div>
+        </Section>
 
-        <p className="text-xl mt-2">
-          コスト改善余地がある可能性があります。
-        </p>
+        <Section>
+          <p className="text-lg font-medium leading-[1.85] text-[#000000] md:text-xl">
+            現状の運用では、
+          </p>
+          <div className="mt-8 space-y-3 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            <p>どこが無駄か分からない</p>
+            <p>どこまで削減できるか分からない</p>
+            <p>投資判断ができない</p>
+          </div>
+          <p className="mt-12 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            最適でない状態を最適と誤認し続ける。
+          </p>
+          <p className="mt-10 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            数理による最適化が行われた場合、
+            <br />
+            この差分は不可逆に拡大する。
+          </p>
+        </Section>
 
-        <p className="mt-8 text-lg leading-relaxed">
-          原油高は止められません<br />
-          しかし見直せるコストは抑えられます。
-        </p>
+        <Section>
+          <p className="text-lg font-medium leading-[1.85] text-[#000000] md:text-xl">
+            配送ルートを起点に
+          </p>
+          <div className="mt-8 space-y-3 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            <p>構造を分解する</p>
+            <p>複数変数を同時に扱う</p>
+            <p>トレードオフを処理する</p>
+            <p>全体最適を導出する</p>
+          </div>
+          <p className="mt-10 text-lg leading-[1.85] text-[#333333] md:text-xl">
+            最適状態を数値で提示する。
+          </p>
+        </Section>
 
-        <div className="mt-10">
+        <Section>
+          <p className="text-lg leading-[1.85] text-[#333333] md:text-xl">
+            どこを動かせばどれだけコストが変わるかが明確になる。
+            <br />
+            最適状態が数値で提示される。
+            <br />
+            意思決定が成立する。
+          </p>
+          <div className="mt-14">
+            <CTA />
+          </div>
+        </Section>
+
+        <Section>
+          <p className="text-lg leading-[1.85] text-[#333333] md:text-xl">
+            算出は、同一条件（物量・拠点・制約）で比較しているため、
+            <br />
+            現状との乖離ではなく、純粋な構造差分である。
+          </p>
+        </Section>
+
+        <Section>
+          <div className="flex justify-center">
+            <CTA />
+          </div>
+        </Section>
+      </main>
+
+      <div className="fixed bottom-0 left-0 right-0 border-t border-neutral-200 bg-[#FFFFFF]/95 px-4 py-4 backdrop-blur-sm">
+        <div className="mx-auto flex max-w-3xl justify-center">
           <CTA />
         </div>
-      </Section>
-
-      {/* 現実 */}
-      <Section gray>
-        <p className="text-lg md:text-xl leading-relaxed">
-          原油価格の上昇により<br />
-          物流コストは確実に上がっています。
-        </p>
-      </Section>
-
-      {/* 差 */}
-      <Section>
-        <p className="text-lg md:text-xl leading-relaxed">
-          同じ業界・同じ規模でも<br />
-          コストに大きな差が出ています。
-        </p>
-      </Section>
-
-      {/* 原因 */}
-      <Section gray>
-        <p className="text-lg md:text-xl font-semibold text-[#0A2643] leading-relaxed">
-          その差は<br />
-          物流の構造で決まります。
-        </p>
-      </Section>
-
-      {/* 自分ごと */}
-      <Section>
-        <p className="text-lg md:text-xl leading-relaxed">
-          あなたの会社にも<br />
-          削減余地が残っている可能性があります。
-        </p>
-      </Section>
-
-      {/* 構造 */}
-      <Section gray>
-        <p className="text-lg md:text-xl leading-relaxed">
-          物流コストは単一要因では決まりません。
-        </p>
-
-        <div className="mt-8 space-y-3 text-lg">
-          <div>・拠点配置</div>
-          <div>・配送設計</div>
-          <div>・積載効率</div>
-          <div>・出荷のばらつき</div>
-        </div>
-      </Section>
-
-      {/* 具体 */}
-      <Section>
-        <p className="text-lg md:text-xl leading-relaxed">
-          拠点配置が最適でないだけで<br />
-          年間1億円以上の差が出るケースがあります。
-        </p>
-      </Section>
-
-      {/* 時間圧 */}
-      <Section gray>
-        <p className="text-lg md:text-xl leading-relaxed">
-          この差は<br />
-          毎月積み上がっています。
-        </p>
-      </Section>
-
-      {/* 診断 */}
-      <Section>
-        <p className="text-lg md:text-xl leading-relaxed">
-          ・3分で完了<br />
-          ・その場で結果表示<br />
-          ・準備不要
-        </p>
-
-        <div className="mt-10">
-          <CTA />
-        </div>
-      </Section>
-
-      {/* 信頼 */}
-      <Section gray>
-        <p className="text-lg md:text-xl leading-relaxed">
-          すでに大手企業では<br />
-          物流の構造最適化が進んでいます。
-        </p>
-      </Section>
-
-      {/* クロージング */}
-      <Section>
-        <p className="text-lg md:text-xl leading-relaxed">
-          判断するためには<br />
-          まず現状の把握が必要です。
-        </p>
-
-        <div className="mt-10">
-          <CTA />
-        </div>
-      </Section>
-
-      {/* フッター */}
-      <footer className="text-center text-sm text-gray-500 py-10">
-        ©DICE LINK, INC.
-      </footer>
-
-      {/* 追従CTA */}
-      <div className="fixed bottom-0 left-0 w-full bg-white border-t p-4">
-        <CTA />
       </div>
-
-    </main>
+    </div>
   );
 }
